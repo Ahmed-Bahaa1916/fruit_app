@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled2/core/utils/size_config.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/dots_indecator.dart';
+import '../../../login/presenation/login_view.dart';
 import 'custom_page.dart';
 
 class HomeViewBody extends StatefulWidget {
@@ -40,7 +41,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           ),
         ),
         Visibility(
-          visible: pageController?.page == 2 ? false : true,
+          visible: pageController!.hasClients
+              ? (pageController?.page == 2 ? false : true)
+              : true,
           child: Positioned(
             top: SizeConfig.defaultSize! * 10,
             right: 32,
@@ -59,7 +62,24 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           right: SizeConfig.defaultSize! * 10,
           left: SizeConfig.defaultSize! * 10,
           bottom: SizeConfig.defaultSize! * 10,
-          child: CustomButton(text: 'Next'),
+          child: CustomButton(
+            text: pageController!.hasClients
+                ? (pageController!.page!.round() == 2 ? 'Get Started' : 'Next')
+                : 'Next',
+            onPressed: () {
+              if (pageController!.page!.round() == 2) {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginView()),
+                );
+              } else {
+                pageController!.nextPage(
+                  duration: const Duration(milliseconds: 400),
+                  curve: Curves.easeInOut,
+                );
+              }
+            },
+          ),
         ),
       ],
     ));
