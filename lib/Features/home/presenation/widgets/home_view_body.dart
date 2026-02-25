@@ -1,8 +1,5 @@
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled2/core/utils/size_config.dart';
-
-import '../../../../core/constants.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/dots_indecator.dart';
 import 'custom_page.dart';
@@ -42,15 +39,18 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 : 0,
           ),
         ),
-        Positioned(
-          top: SizeConfig.defaultSize! * 10,
-          right: 32,
-          child: Text(
-            'Skip',
-            style: TextStyle(
-              color: const Color(0XFF898989),
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
+        Visibility(
+          visible: pageController?.page == 2 ? false : true,
+          child: Positioned(
+            top: SizeConfig.defaultSize! * 10,
+            right: 32,
+            child: Text(
+              'Skip',
+              style: TextStyle(
+                color: const Color(0XFF898989),
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
