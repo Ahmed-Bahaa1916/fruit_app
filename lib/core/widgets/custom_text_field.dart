@@ -9,11 +9,11 @@ class CustomTextFormField extends StatelessWidget {
 
   const CustomTextFormField({
     super.key,
-    required this.inputType,
-    required this.suffexIcon,
-    required this.onSaved,
-    required this.onChanged,
-    required this.maxLines,
+     this.inputType,
+     this.suffexIcon,
+     this.onSaved,
+     this.onChanged,
+     this.maxLines,
   });
 
   @override
