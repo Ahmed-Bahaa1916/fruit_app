@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled2/core/utils/size_config.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/dots_indecator.dart';
-import '../../../login/presenation/login_view.dart';
+import '../../../login/presentation/login_view.dart';
 import 'custom_page.dart';
 
 class HomeViewBody extends StatefulWidget {
