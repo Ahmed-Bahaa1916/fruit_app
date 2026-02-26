@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled2/core/constants.dart';
 import 'package:untitled2/core/utils/size_config.dart';
 
+import '../complete_information/complete_information_view.dart';
 import 'login_buttom.dart';
 
 class LoginViewBody extends StatelessWidget {
@@ -13,12 +14,15 @@ class LoginViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 75),
       child: (Column(
         children: [
-          Image.asset(height: 250, width: 300, 'assets/images/logo.png'),
+          SizedBox(
+            height: SizeConfig.defaultSize! * 17,
+            child: Image.asset('assets/images/logo.png'),
+          ),
           SizedBox(height: SizeConfig.defaultSize! * 1),
           Text(
             'Fruit Market',
             style: TextStyle(
-              color: KprimaryColor,
+              color: Color(0XFF69A03A),
               fontSize: 51,
               fontWeight: FontWeight.bold,
             ),
@@ -32,7 +36,14 @@ class LoginViewBody extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: LoginButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CompleteInformationView(),
+                        ),
+                      );
+                    },
                     image: 'assets/images/google-logo-png-image.png',
                     text: 'Log in with',
                   ),
@@ -44,8 +55,15 @@ class LoginViewBody extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: LoginButton(
-                    onPressed: () {},
-                    image: 'assets/images/google-logo-png-image.png',
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CompleteInformationView(),
+                        ),
+                      );
+                    },
+                    image: 'assets/images/facebook-logo.png',
                     text: 'Log in with',
                   ),
                 ),
