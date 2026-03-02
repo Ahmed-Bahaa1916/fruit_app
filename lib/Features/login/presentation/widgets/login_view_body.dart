@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:untitled2/core/constants.dart';
 import 'package:untitled2/core/utils/size_config.dart';
 
 import '../complete_information/complete_information_view.dart';
