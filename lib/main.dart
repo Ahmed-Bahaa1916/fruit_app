@@ -16,7 +16,7 @@ class FruitApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return (GetMaterialApp(
-      theme: ThemeData(fontFamily: 'assets/fonts/Poppins-Regular.ttf'),
+      theme: ThemeData(fontFamily: 'Poppins'),
       debugShowCheckedModeBanner: false,
       home: SplashView(),
     ));

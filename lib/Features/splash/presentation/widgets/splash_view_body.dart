@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:untitled2/core/utils/size_config.dart';
 
 import '../../../home/presenation/home_view.dart';
+import '../../../login/presentation/login_view.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -21,29 +23,28 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
     animatedController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     );
 
     fadingAnimation = Tween<Offset>(
-      begin: Offset(0, 4),
+      begin: const Offset(0, 4),
       end: Offset.zero,
     ).animate(animatedController);
 
     animatedController.forward();
 
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () {
+      if (!mounted) return;
+
+      final bool isLoggedIn = FirebaseAuth.instance.currentUser != null;
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => HomeView()),
+        MaterialPageRoute(
+          builder: (context) =>
+              isLoggedIn ? const HomeView() : const LoginView(),
+        ),
       );
     });
-
-    fadingAnimation = Tween<Offset>(
-      begin: Offset(0, 4),
-      end: Offset.zero,
-    ).animate(animatedController);
-
-    animatedController.forward();
   }
 
   @override
@@ -57,7 +58,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     SizeConfig().init(context);
     return Column(
       children: [
-        Spacer(),
+        const Spacer(),
         AnimatedBuilder(
           animation: fadingAnimation,
           builder: (context, child) {
@@ -66,10 +67,10 @@ class _SplashViewBodyState extends State<SplashViewBody>
           child: Text(
             'Fruit Market',
             textAlign: TextAlign.center,
-            textHeightBehavior: TextHeightBehavior(
+            textHeightBehavior: const TextHeightBehavior(
               applyHeightToFirstAscent: false,
             ),
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 51,
               fontWeight: FontWeight.bold,

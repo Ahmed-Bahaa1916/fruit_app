@@ -32,7 +32,6 @@ class LoginRepoImpl extends LoginRepo {
 
   @override
   Future<dynamic> loginWithGoogle() async {
-    // الإصدار الجديد من google_sign_in يستخدم singleton + authenticate
     final GoogleSignIn googleSignIn = GoogleSignIn.instance;
 
     await googleSignIn.initialize();
